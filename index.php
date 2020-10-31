@@ -16,51 +16,15 @@
     
     <script src="https://kit.fontawesome.com/be65c86741.js" crossorigin="anonymous"></script>
 
+    <?php include('inc/menu.php'); ?>
+
 </head>
 <body>
-    <header>
-        <!--Menu-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand" href="#">Dietetica</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarColor03">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#"><i class="fas fa-piggy-bank"></i> Ofertas
-                        <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-store"></i> Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-utensils"></i> Alimentos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fas fa-street-view"></i> Ubicación</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar producto">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
-            </div>
-        </nav>
-    </header>
-        <!--Fin Menu-->
+    
+    <?php 
+        menu();
+    ?>
+        
     <main>
         <!--Jumbotron -->
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -71,21 +35,21 @@
             </ol>
             <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="sitio/img/jumbotron.jpg" class="d-block w-100" >
+                <img src="img/jumbotron.jpg" class="d-block w-100" >
                 <div class="carousel-caption d-none d-md-block">
                 <h5>Titulo 1</h5>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="sitio/img/jumbotron.jpg" class="d-block w-100" >
+                <img src="img/jumbotron.jpg" class="d-block w-100" >
                 <div class="carousel-caption d-none d-md-block">
                 <h5>Titulo 2</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="sitio/img/jumbotron.jpg" class="d-block w-100" >
+                <img src="img/jumbotron.jpg" class="d-block w-100" >
                 <div class="carousel-caption d-none d-md-block">
                 <h5>Titulo 5</h5>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -140,7 +104,7 @@
 
     <footer class="footer">
         <div class="container">
-          <span class="text-muted">@ Copyrigth 2020 | Grupo vagancia</span>
+          <span class="float-rigth">@Copyrigth 2020 | Grupo vagancia</span>
         </div>
     </footer>
     
