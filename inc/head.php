@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/estilo.css">
         
         <!--Template -->
-        <link rel="stylesheet" href="css/lux.min.css">
+        <link rel="stylesheet" href="css/minty.min.css">
 <?php
     }
 ?>

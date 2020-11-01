@@ -9,6 +9,6 @@
     </footer>
     <!-- Fin footer -->
 
-    <?php
+<?php
     }
 ?>
