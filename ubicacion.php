@@ -28,8 +28,8 @@
     ?>
         
     <main class="mt-5">
-        <!-- Aqui colocar el contenido -->
-    </main>
+            <img src="img/ubicacion.png">
+    </main> 
 
     <?php 
         footer();
