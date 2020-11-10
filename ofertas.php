@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    
-    <script src="https://kit.fontawesome.com/be65c86741.js" crossorigin="anonymous"></script>
-
     <?php include('inc/head.php'); ?>
-    <?php include('inc/menu.php'); ?>
-    <?php include('inc/footer.php'); ?>
 
     <?php 
         head();
     ?>
-
+    <?php include('inc/menu.php'); ?>
+    <?php include('inc/footer.php'); ?>
+    <?php include('inc/conexion.php'); ?>
 </head>
 <body >
     
     <?php 
         menu();
+
+        $resultado = mysqli_query($mysqli, "SELECT * FROM productos");
     ?>
         
     <main class="container mt-5">
-        <div class="jumbotron">
-            <div class="container">
-                <h1 class="display-4">Fluid jumbotron</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-            </div>
-        </div>
-        <div class="jumbotron">
-            <div class="container">
-                <h1 class="display-4">Fluid jumbotron</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-            </div>
-        </div>
-        <div class="jumbotron">
-            <div class="container">
-                <h1 class="display-4">Fluid jumbotron</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-            </div>
-        </div>
-        <div class="jumbotron">
-            <div class="container">
-                <h1 class="display-4">Fluid jumbotron</h1>
-                <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-            </div>
-        </div>
+
+        <?php if ($resultado): ?>
+            <h1 class="text-center">No se encontraron ofertas</h1> 
+        <?php else: ?>
+
+            <?php 
+                while ($fila = mysqli_fetch_assoc($resultado)) {
+                    echo "<div class='jumbotron'>";
+                        echo "<div class='container'>";
+                            echo "<h1 class='display-4'>".$fila[0]."</h1>";
+                            echo "<p class='lead'>".$fila[0]."</p>";
+                        echo "</div>";
+                    echo "</div>";
+                }
+            ?>
+        <?php endif; ?>
     </main>
 
     <?php 

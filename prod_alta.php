@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    
-    <script src="https://kit.fontawesome.com/be65c86741.js" crossorigin="anonymous"></script>
-
     <?php include('inc/head.php'); ?>
-    <?php include('inc/menu.php'); ?>
-    <?php include('inc/footer.php'); ?>
 
     <?php 
         head();
     ?>
+    <?php include('inc/menu.php'); ?>
+    <?php include('inc/footer.php'); ?>
 
 </head>
 <body >
@@ -26,32 +20,28 @@
         <h1 class="text-center">Nuevo producto</h1>
         <form action="prod_procesar.php" method="POST">
             <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="exampleFormControlInput1">Nombre del producto</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect2">Example multiple select</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <label for="exampleFormControlTextarea1">Descripción</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Categoría</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option disabled selected>Seleccione una categoria</option>
+                    <option value="Alimentos">Alimentos</option>
+                    <option value="Productos">Productos</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Precio</label>
+                <input type="text" name="precio" class="form-control" id="exampleFormControlInput1" >
+            </div>
+            <div class="form-group">
+                <input type="checkbox" class="form-control" id="exampleFormControlInput1" name="destacado">
+                <label for="exampleFormControlInput1">Producto destacado</label>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>

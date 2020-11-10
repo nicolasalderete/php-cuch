@@ -1,92 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    
-    <script src="https://kit.fontawesome.com/be65c86741.js" crossorigin="anonymous"></script>
-
     <?php include('inc/head.php'); ?>
-    <?php include('inc/menu.php'); ?>
-    <?php include('inc/footer.php'); ?>
 
     <?php 
         head();
     ?>
+    <?php include('inc/secure.php'); ?>
+    <?php include('inc/menu.php'); ?>
+    <?php include('inc/footer.php'); ?>
+    <?php include('inc/conexion.php'); ?>
 
 </head>
 <body >
     
     <?php 
         menu();
+        $resultado = mysqli_query($mysqli, "SELECT * FROM ofertas");
     ?>
         
     <main class="mt-5 mr-5 ml-5">
         <h1 class="text-center">Alta, baja y modificación de productos</h1>
         <p><a href="prod_alta.php" class="btn btn-secondary"><i class="fas fa-plus-circle"></i> Nueva producto</a></p>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Descripcion</th>
-                    <th scope="col">Categoria</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col" style="width: 20%">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>
-                        <button class="btn">
-                            <i class="fas fa-pencil-alt"></i> 
-                        </button>
-                        |
-                        <button class="btn">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>
-                        <button class="btn">
-                            <i class="fas fa-pencil-alt"></i> 
-                        </button>
-                        |
-                        <button class="btn">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>
-                        <button class="btn">
-                            <i class="fas fa-pencil-alt"></i> 
-                        </button>
-                        |
-                        <button class="btn">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <?php if ($resultado): ?>
+            <h1 class="text-center">No se encontraron resultados</h1> 
+        <?php else: ?>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripcion</th>
+                        <th scope="col" style="width: 20%;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php 
+                        while ($fila = mysqli_fetch_assoc($resultado)) {
+                            echo "<tr>";
+                            echo "<th scope='row'>".$fila[0]."</th>";
+                                echo "<td>".$fila[0]."</td>";
+                                echo "<td>".$fila[0]."</td>";
+                                echo "<td>";
+                                    echo "<button class='btn'>";
+                                        echo "<i class='fas fa-pencil-alt'></i> Editar";
+                                    echo "</button>|";
+                                    echo "<button class='btn'>";
+                                        echo "<i class='fas fa-trash-alt'></i> Eliminar";
+                                    echo "</button>";
+                                echo "</td>";
+                            echo "</tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
+        <?php endif; ?>     
     </main>
 
     <?php 
