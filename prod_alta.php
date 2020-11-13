@@ -39,9 +39,9 @@
                 <label for="exampleFormControlInput1">Precio</label>
                 <input type="text" name="precio" class="form-control" id="exampleFormControlInput1" >
             </div>
-            <div class="form-group">
-                <input type="checkbox" class="form-control" id="exampleFormControlInput1" name="destacado">
-                <label for="exampleFormControlInput1">Producto destacado</label>
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="destacado">
+                <label class="form-check-label" for="exampleCheck1">Destacado</label>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>

@@ -44,7 +44,6 @@
                         <a class="dropdown-item" href="prod_admin.php">Productos</a>
                         <a class="dropdown-item" href="cat_admin.php">Categorias</a>
                         <a class="dropdown-item" href="ofer_admin.php">Ofertas</a>
-                        <a class="dropdown-item" href="dest_admin.php">Productos destacados</a>
                         <a class="dropdown-item" href="user_admin.php">Usuarios</a>
                         </div>
                     </li>

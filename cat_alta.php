@@ -24,14 +24,14 @@
         <form action="cat_procesar.php" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre de la categoría</label>
-                <input type="nombre" class="form-control" id="exampleFormControlInput1" >
+                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" >
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"></textarea>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Agregar</button>
             </div>
         </form>
     </main>

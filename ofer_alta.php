@@ -15,7 +15,7 @@
     <?php 
         menu();
 
-        $resultado = mysqli_query($mysqli, "SELECT * FROM productos");
+        $resultado = mysqli_query($db, "SELECT * FROM ofertas");
     ?>
         
     <main class="container mt-5">

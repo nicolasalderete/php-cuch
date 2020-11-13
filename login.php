@@ -21,7 +21,7 @@
         $Message = "Debe completar los campos usuario y/o clave";
         header("Location:index.php?error={$Message}");
     } else {
-        $resultado = mysqli_query($mysqli, "SELECT nombre as nombre,  apellido as apellidp FROM usuarios WHERE usuario = '" .$username. "' AND password='" .$password. "'");
+        $resultado = mysqli_query($conexion, "SELECT nombre as nombre,  apellido as apellidp FROM usuarios WHERE usuario = '" .$username. "' AND password='" .$password. "'");
         $fila = mysqli_fetch_assoc($resultado);
         if ($fila) {
             session_start();

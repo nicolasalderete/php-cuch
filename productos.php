@@ -26,7 +26,11 @@
             $categoriaSearch = $_GET["categoria"];
         }
         
-        $resultado = mysqli_query($mysqli, "SELECT * FROM productos");
+        $consulta = 'SELECT * FROM productos';
+        $resultado = mysqli_query($conexion, $consulta)
+            or die('No se ha podido ejecutar la consulta.');
+
+        
 
     ?>
         
@@ -69,7 +73,7 @@
 
         </div>
 
-        <?php if ($resultado): ?>
+        <?php if (!$resultado): ?>
             <h1 class="text-center">No se encontraron resultados</h1> 
         <?php else: ?>
             <div class="container mt-5">
@@ -78,10 +82,10 @@
                         while ($fila = mysqli_fetch_assoc($resultado)) {
                             echo "<div class='col mb-4'>";
                                 echo "<div class='card'>";
-                                    echo "<img src=img/".$fila[0]." class='card-img-top' alt='...'>";
+                                    echo "<img src=img/sitio/cereal.jpg class='card-img-top' alt='Cereal'>";
                                     echo "<div class='card-body'>";
-                                        echo "<h5 class='card-title'>".$fila[0]."/h5>";
-                                        echo "<p class='card-text'>".$fila[0]."</p>";
+                                        echo "<h5 class='card-title'>".$fila['nombre']."</h5>";
+                                        echo "<p class='card-text'>".$fila['descripcion']."</p>";
                                     echo "</div>";
                                 echo "</div>";
                             echo "</div>";
@@ -92,7 +96,8 @@
         <?php endif; ?>  
     </main>
 
-    <?php 
+    <?php
+        mysqli_close($conexion); 
         footer();
     ?>
 

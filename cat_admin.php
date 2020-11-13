@@ -17,7 +17,11 @@
     
     <?php 
         menu();
-        $resultado = mysqli_query($mysqli, "SELECT * FROM categorias");
+        $consulta = 'SELECT * FROM categorias';
+        $resultado = mysqli_query($conexion, $consulta)
+            or die('No se ha podido ejecutar la consulta.');
+
+        mysqli_close($conexion);
     ?>
         
     <main class="container mt-5">
@@ -25,7 +29,7 @@
         <p><a href="cat_alta.php" class="btn btn-secondary"><i class="fas fa-plus-circle"></i> Nueva categoría</a></p>
 
 
-        <?php if ($resultado): ?>
+        <?php if (!$resultado): ?>
             <h1 class="text-center">No se encontraron resultados</h1> 
         <?php else: ?>
             <table class="table">
@@ -41,9 +45,9 @@
                     <?php 
                         while ($fila = mysqli_fetch_assoc($resultado)) {
                             echo "<tr>";
-                            echo "<th scope='row'>".$fila[0]."</th>";
-                                echo "<td>".$fila[0]."</td>";
-                                echo "<td>".$fila[0]."</td>";
+                            echo "<th scope='row'>".$fila['id']."</th>";
+                                echo "<td>".$fila['nombre']."</td>";
+                                echo "<td>".$fila['descripcion']."</td>";
                                 echo "<td>";
                                     echo "<button class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";

@@ -15,13 +15,17 @@
     
     <?php 
         menu();
-        $resultado = mysqli_query($mysqli, "SELECT * FROM ofertas");
+        $consulta = 'SELECT * FROM ofertas';
+        $resultado = mysqli_query($conexion, $consulta)
+            or die('No se ha podido ejecutar la consulta.');
+
+        mysqli_close($conexion);
     ?>
         
     <main class="container mt-5">
         <h1 class="text-center">Alta, baja y modificación de ofertas</h1>
         <p><a href="ofer_alta.php" class="btn btn-secondary"><i class="fas fa-plus-circle"></i> Nueva oferta</a></p>
-        <?php if ($resultado): ?>
+        <?php if (!$resultado): ?>
             <h1 class="text-center">No se encontraron resultados</h1> 
         <?php else: ?>
             <table class="table">
@@ -30,6 +34,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Descripcion</th>
+                        <th scope="col">Precio</th>
                         <th scope="col" style="width: 20%;">Acciones</th>
                     </tr>
                 </thead>
@@ -37,9 +42,10 @@
                     <?php 
                         while ($fila = mysqli_fetch_assoc($resultado)) {
                             echo "<tr>";
-                            echo "<th scope='row'>".$fila[0]."</th>";
-                                echo "<td>".$fila[0]."</td>";
-                                echo "<td>".$fila[0]."</td>";
+                            echo "<th scope='row'>".$fila['id']."</th>";
+                                echo "<td>".$fila['nombre']."</td>";
+                                echo "<td>".$fila['descripcion']."</td>";
+                                echo "<td>".$fila['precio']."</td>";
                                 echo "<td>";
                                     echo "<button class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";

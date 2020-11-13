@@ -15,12 +15,16 @@
     <?php 
         menu();
 
-        $resultado = mysqli_query($mysqli, "SELECT * FROM productos");
+        $consulta = 'SELECT * FROM ofertas';
+        $resultado = mysqli_query($conexion, $consulta)
+            or die('No se ha podido ejecutar la consulta.');
+
+        mysqli_close($conexion);
     ?>
         
     <main class="container mt-5">
 
-        <?php if ($resultado): ?>
+        <?php if (!$resultado): ?>
             <h1 class="text-center">No se encontraron ofertas</h1> 
         <?php else: ?>
 
@@ -28,8 +32,8 @@
                 while ($fila = mysqli_fetch_assoc($resultado)) {
                     echo "<div class='jumbotron'>";
                         echo "<div class='container'>";
-                            echo "<h1 class='display-4'>".$fila[0]."</h1>";
-                            echo "<p class='lead'>".$fila[0]."</p>";
+                            echo "<h1 class='display-4'>".$fila['nombre']."</h1>";
+                            echo "<p class='lead'>".$fila['descripcion']."</p>";
                         echo "</div>";
                     echo "</div>";
                 }
