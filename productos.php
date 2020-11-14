@@ -17,21 +17,24 @@
 
         $productoSearch = "";
         $categoriaSearch = "";
-
+        $consulta = "select * from productos";
         if (isset($_GET["producto"])) {
-            $productoSearch = $_GET["producto"];
+            $productoSearch = filter_var($_GET["producto"], FILTER_SANITIZE_STRING);
+            $consulta = $consulta." where nombre like '$productoSearch%'";
         }
 
         if (isset($_GET["categoria"])) {
-            $categoriaSearch = $_GET["categoria"];
+            if ($productoSearch != "") {
+                $categoriaSearch = filter_var($_GET["categoria"], FILTER_SANITIZE_STRING);
+                $consulta = $consulta." and categoria = '$categoriaSearch'";
+            } else {
+                $consulta = $consulta." where categoria = '$categoriaSearch'";
+            }
         }
-        
-        $consulta = 'SELECT * FROM productos';
         $resultado = mysqli_query($conexion, $consulta)
-            or die('No se ha podido ejecutar la consulta.');
+            or header("location: error.html");
 
         
-
     ?>
         
     <main class="mt-5">

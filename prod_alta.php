@@ -6,14 +6,23 @@
     <?php 
         head();
     ?>
+    <?php include('inc/secure.php'); ?>
     <?php include('inc/menu.php'); ?>
     <?php include('inc/footer.php'); ?>
+    <?php include('inc/conexion.php'); ?>
 
 </head>
 <body >
     
     <?php 
         menu();
+        
+        $consulta = 'SELECT * FROM categorias';
+        
+        $resultado = mysqli_query($conexion, $consulta)
+            or die('No se ha podido ejecutar la consulta.');
+
+        mysqli_close($conexion);
     ?>
         
     <main class="container mt-5">
@@ -21,7 +30,7 @@
         <form action="prod_procesar.php" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre del producto</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre">
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
@@ -29,22 +38,25 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Categoría</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <select class="form-control" id="exampleFormControlSelect1" name="categoria" >
                     <option disabled selected>Seleccione una categoria</option>
-                    <option value="Alimentos">Alimentos</option>
-                    <option value="Productos">Productos</option>
+                    <?php 
+                        while ($fila = mysqli_fetch_assoc($resultado)) {
+                            echo "<option value=".$fila['id'].">".$fila['nombre']."</option>";
+                        }
+                    ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Precio</label>
-                <input type="text" name="precio" class="form-control" id="exampleFormControlInput1" >
+                <input type="text" name="precio" class="form-control" id="exampleFormControlInput1" required>
             </div>
             <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="destacado">
                 <label class="form-check-label" for="exampleCheck1">Destacado</label>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Agregar</button>
             </div>
         </form>
     </main>

@@ -2,14 +2,13 @@
     include('inc/conexion.php');
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        // Check if username is empty
+
         if(empty(trim($_POST["username"]))){
             $username_err = "Please enter username.";
         } else{
             $username = trim($_POST["username"]);
         }
         
-        // Check if password is empty
         if(empty(trim($_POST["password"]))){
             $password_err = "Please enter your password.";
         } else{
@@ -21,21 +20,28 @@
         $Message = "Debe completar los campos usuario y/o clave";
         header("Location:index.php?error={$Message}");
     } else {
-        $resultado = mysqli_query($conexion, "SELECT nombre as nombre,  apellido as apellidp FROM usuarios WHERE usuario = '" .$username. "' AND password='" .$password. "'");
-        $fila = mysqli_fetch_assoc($resultado);
-        if ($fila) {
+        $resultado = mysqli_query($conexion, "SELECT nombre as nombre,  apellido as apellido, clave as clave FROM usuarios WHERE usuario = '$username'");
+        
+        while($fila = mysqli_fetch_assoc($resultado)) {
+            $clavebdd = $fila['clave'];
+        }
+
+        if (password_verify($password, $clavebdd)) {
             session_start();
-            $_SESSION["usuario"] = $fila['_msg']. " " .$fila['_msg'];
+
+            $resultado = mysqli_query($conexion, "SELECT nombre as nombre,  apellido as apellido FROM usuarios WHERE usuario = '$username'");
+            $fila = mysqli_fetch_assoc($resultado);
+
+            $_SESSION["usuario"] = $fila['nombre']. " " .$fila['apellido'];
             $_SESSION["loggedIn"] = true;
-            $Message = "Login exitoso";
+            $Message = "Bienvenido ".$_SESSION["usuario"]. "";
             header("Location:index.php?success={$Message}");
         } else {
             $Message = "Usuario y/o clave inválidos";
             header("Location:index.php?error={$Message}");
         }
-
-        mysql_free_result($resultado);
     }
+    mysqli_close($conexion);
 
     
 ?>

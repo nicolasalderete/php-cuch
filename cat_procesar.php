@@ -20,11 +20,19 @@
         $Message = "Debe completar los campos categoria y descripcion";
         header("Location:cat_alta.php?error={$Message}");
     } else {
-        $altausuario = "INSERT INTO CATEGORIAS (id, nombre, descripcion) values (NULL, '$nombre', '$descripcion')";
-        $resultado = mysqli_query($conexion, $altausuario);
-        echo 'Se guardo la categoria'.$resultado."";
-
+        $altausuario = "INSERT INTO categorias (id, nombre, descripcion) values (NULL, '$nombre', '$descripcion')";
+        echo $altausuario;
+        $resultado = mysqli_query($conexion, $altausuario) or die('No se ha podido ejecutar la consulta.');
+        
         mysqli_close($conexion);
+
+        if ($resultado) {
+            $Message = "Se ha creado la categoria ".$nombre."";
+            header("Location:cat_alta.php?success={$Message}");
+        } else {
+            $Message = "Error al insertar la categoria";
+            header("Location:cat_alta.php?error={$Message}");
+        }
     }
 
     

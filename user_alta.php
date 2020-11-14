@@ -6,6 +6,7 @@
     <?php 
         head();
     ?>
+    <?php include('inc/secure.php'); ?>
     <?php include('inc/menu.php'); ?>
     <?php include('inc/footer.php'); ?>
 
@@ -20,35 +21,23 @@
         <h1 class="text-center">Nuevo usuario</h1>
         <form action="user_procesar.php" method="POST">
             <div class="form-group">
-                <label for="exampleFormControlInput1">Email address</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label for="exampleFormControlInput1">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su nombre" required>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Example select</label>
-                <select class="form-control" id="exampleFormControlSelect1">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                </select>
+                <label for="exampleFormControlInput1">Apellido</label>
+                <input type="text" name="apellido" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su apellido" required>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect2">Example multiple select</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                </select>
+                <label for="exampleFormControlInput1">Usuario</label>
+                <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su usuario" required>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Example textarea</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <label for="exampleFormControlInput1">Clave</label>
+                <input type="password" name="clave" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su clave" required>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
             </div>
         </form>
     </main>

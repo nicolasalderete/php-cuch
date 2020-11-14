@@ -15,7 +15,7 @@
     <?php 
         menu();
 
-        $resultado = mysqli_query($db, "SELECT * FROM ofertas");
+        $resultado = mysqli_query($conexion, "SELECT * FROM productos");
     ?>
         
     <main class="container mt-5">
@@ -34,7 +34,7 @@
                 <select multiple class="form-control" id="exampleFormControlSelect2">
                     <?php 
                         while ($fila = mysqli_fetch_assoc($resultado)) {
-                            echo "<option value='".$fila[0]."'>".$fila[0]."</option>";
+                            echo "<option value='".$fila['id']."'>".$fila['nombre']."</option>";
                         }
                     ?>
                 </select>

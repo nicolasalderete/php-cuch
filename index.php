@@ -28,24 +28,24 @@
             </ol>
             <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/jumbotron.jpg" class="d-block w-100" >
+                <img src="img/vinagres.jpg" class="d-block w-100" >
                 <div class="carousel-caption d-none d-md-block">
-                <h5>Titulo 1</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <!--<h5>Titulo 1</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/jumbotron.jpg" class="d-block w-100" >
+                <img src="img/cremasdemano.jpg" class="d-block w-100" >
                 <div class="carousel-caption d-none d-md-block">
-                <h5>Titulo 2</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <!--<h5>Titulo 1</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/jumbotron.jpg" class="d-block w-100" >
+                <img src="img/protectorsolar.jpg" class="d-block w-100" >
                 <div class="carousel-caption d-none d-md-block">
-                <h5>Titulo 5</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+               <!--<h5>Titulo 1</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>-->
                 </div>
             </div>
             </div>
@@ -70,24 +70,27 @@
         <div class="container marketing">
 
             <div class="row">
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-            </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img src="./img/sitio/cereal.jpg" alt="Cereal" class="rounded-circle">
+                    <title>Placeholder</title>
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                <img src="./img/sitio/cereal.jpg" alt="Cereal" class="rounded-circle">
+                    <title>Placeholder</title>
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                <img src="./img/sitio/cereal.jpg" alt="Cereal" class="rounded-circle">
+                    <title>Placeholder</title>
+                    <h2>Heading</h2>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                </div><!-- /.col-lg-4 -->
             </div><!-- /.row -->
         </div>
 

@@ -6,12 +6,10 @@
     <?php 
         head();
     ?>
-
     <?php include('inc/secure.php'); ?>
     <?php include('inc/menu.php'); ?>
     <?php include('inc/footer.php'); ?>
     <?php include('inc/conexion.php'); ?>
-
 </head>
 <body >
     

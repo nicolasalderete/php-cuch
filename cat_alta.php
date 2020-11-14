@@ -24,7 +24,7 @@
         <form action="cat_procesar.php" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre de la categoría</label>
-                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" >
+                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>

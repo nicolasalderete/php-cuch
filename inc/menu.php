@@ -60,7 +60,7 @@
 
             <?php if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']): ?>
                 <div class="nav-item ml-2">
-                    <a class="nav-link btn btn-danger " href="logout.php"><i class="fas fa-user-times"></i> cerrar sesion</a>
+                    <a class="nav-link btn btn-danger " href="logout.php"><i class="fas fa-user-times"></i> <?php echo $_SESSION['usuario'] ?></a>
                 </div>
             <?php else: ?>
                 <div class="nav-item dropleft">
