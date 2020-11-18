@@ -11,28 +11,44 @@
     <?php include('inc/secure.php'); ?>
     <?php include('inc/menu.php'); ?>
     <?php include('inc/footer.php'); ?>
-
+    <?php include('inc/conexion.php'); ?>   
 </head>
 <body >
     
     <?php 
         menu();
+
+        if(empty(trim($_GET["id"]))){
+            header("Location:error");
+            exit;
+        } else {
+            $idCategoria = filter_var($_GET["id"], FILTER_SANITIZE_STRING);
+            
+            $consulta = "select * from categorias where id = '$idCategoria'";
+            $resultado = mysqli_query($conexion, $consulta)
+            or header("Location:error");
+
+            mysqli_close($conexion);
+
+            $fila = mysqli_fetch_assoc($resultado);
+        }
     ?>
         
     <main class="container mt-5">
-        <h1 class="text-center">Nueva categoría</h1>
+        <h1 class="text-center">Modificar categoría</h1>
         <form action="cat_procesar.php" method="POST">
-            <input type="hidden" name="accion" class="form-control" id="exampleFormControlInput1" value="alta">
+            <input type="hidden" name="accion" class="form-control" id="exampleFormControlInput1" value="update">
+            <input type="hidden" name="catId" class="form-control" id="exampleFormControlInput1" value="<?php echo $fila['id']?>">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre de la categoría</label>
-                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" required>
+                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" value="<?php echo $fila['nombre']?>" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"><?php echo $fila['descripcion']?></textarea>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Actualizar</button>
                 <a href="cat_admin.php" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-left"></i> Volver</a>
             </div>
         </form>

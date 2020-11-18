@@ -9,36 +9,53 @@
     <?php include('inc/secure.php'); ?>
     <?php include('inc/menu.php'); ?>
     <?php include('inc/footer.php'); ?>
-
+    <?php include('inc/conexion.php'); ?>
 </head>
 <body >
     
     <?php 
         menu();
+
+        if(empty(trim($_GET["id"]))){
+            header("Location:error");
+            exit;
+        } else {
+            $idUsuario = filter_var($_GET["id"], FILTER_SANITIZE_STRING);
+            
+            $consulta = "select * from usuarios where id_usuario = '$idUsuario'";
+            $resultado = mysqli_query($conexion, $consulta)
+            or header("Location:error");
+
+            mysqli_close($conexion);
+
+            $fila = mysqli_fetch_assoc($resultado);
+        }
     ?>
         
     <main class="container mt-5">
-        <h1 class="text-center">Nuevo usuario</h1>
+        <h1 class="text-center">Modificar usuario</h1>
         <form action="user_procesar.php" method="POST">
-            <input type="hidden" name="accion" id="exampleFormControlInput1" value="alta">
+            <input type="hidden" name="accion" id="exampleFormControlInput1" value="update">
+            <input type="hidden" name="userId" id="exampleFormControlInput1" value="<?php echo $fila['id_usuario']?>">
+
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre</label>
-                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su nombre" required>
+                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" value="<?php echo $fila['nombre']?>" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Apellido</label>
-                <input type="text" name="apellido" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su apellido" required>
+                <input type="text" name="apellido" class="form-control" id="exampleFormControlInput1" value="<?php echo $fila['apellido']?>" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Usuario</label>
-                <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su usuario" required>
+                <input type="text" name="usuario" class="form-control" id="exampleFormControlInput1" value="<?php echo $fila['usuario']?>" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Clave</label>
-                <input type="password" name="clave" class="form-control" id="exampleFormControlInput1" placeholder="ingrese su clave" required>
+                <input type="password" name="clave" class="form-control" id="exampleFormControlInput1" value="<?php echo $fila['clave']?>" required>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i> Modificar</button>
                 <a href="user_admin.php" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-left"></i> Volver</a>
             </div>
         </form>

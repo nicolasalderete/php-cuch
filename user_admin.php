@@ -46,12 +46,12 @@
                                 echo "<td>".$fila['nombre']."</td>";
                                 echo "<td>".$fila['apellido']."</td>";
                                 echo "<td>";
-                                    echo "<button class='btn'>";
+                                    echo "<a href='user_edit.php?id=".$fila['id_usuario']."' class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";
-                                    echo "</button>|";
-                                    echo "<button class='btn'>";
+                                    echo "</a> | ";
+                                    echo "<a href='user_delete.php?id=".$fila['id_usuario']."' class='btn'>";
                                         echo "<i class='fas fa-trash-alt'></i> Eliminar";
-                                    echo "</button>";
+                                    echo "</a>";
                                 echo "</td>";
                             echo "</tr>";
                         }

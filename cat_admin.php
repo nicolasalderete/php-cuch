@@ -25,8 +25,6 @@
     <main class="container mt-5">
         <h1 class="text-center">Alta, baja y modificación de categorías</h1>
         <p><a href="cat_alta.php" class="btn btn-secondary"><i class="fas fa-plus-circle"></i> Nueva categoría</a></p>
-
-
         <?php if (!$resultado): ?>
             <h1 class="text-center">No se encontraron resultados</h1> 
         <?php else: ?>
@@ -47,12 +45,12 @@
                                 echo "<td>".$fila['nombre']."</td>";
                                 echo "<td>".$fila['descripcion']."</td>";
                                 echo "<td>";
-                                    echo "<button class='btn'>";
+                                    echo "<a href='cat_edit.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";
-                                    echo "</button>|";
-                                    echo "<button class='btn'>";
+                                    echo "</a> | ";
+                                    echo "<a href='cat_delete.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-trash-alt'></i> Eliminar";
-                                    echo "</button>";
+                                    echo "</a>";
                                 echo "</td>";
                             echo "</tr>";
                         }

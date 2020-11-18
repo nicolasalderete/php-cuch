@@ -18,23 +18,27 @@
         $productoSearch = "";
         $categoriaSearch = "";
         $consulta = "select * from productos";
-        if (isset($_GET["producto"])) {
+        if (isset($_GET["producto"]) && $_GET["producto"] != "") {
             $productoSearch = filter_var($_GET["producto"], FILTER_SANITIZE_STRING);
             $consulta = $consulta." where nombre like '$productoSearch%'";
         }
 
-        if (isset($_GET["categoria"])) {
+        if (isset($_GET["categoria"]) && $_GET["categoria"] != "") {
+            $categoriaSearch = $_GET["categoria"];
             if ($productoSearch != "") {
-                $categoriaSearch = filter_var($_GET["categoria"], FILTER_SANITIZE_STRING);
-                $consulta = $consulta." and categoria = '$categoriaSearch'";
+                $consulta = $consulta." and categoriaid='$categoriaSearch'";
             } else {
-                $consulta = $consulta." where categoria = '$categoriaSearch'";
+                $consulta = $consulta." where categoriaid='$categoriaSearch'";
             }
         }
         $resultado = mysqli_query($conexion, $consulta)
-            or header("location: error.html");
+            or header("location: error.html?'$consulta'");
 
-        
+        $queryCat = 'SELECT * FROM categorias';
+    
+        $listCat = mysqli_query($conexion, $queryCat)
+            or die('No se ha podido ejecutar la consulta.');
+
     ?>
         
     <main class="mt-5">
@@ -45,29 +49,25 @@
                 <form action="productos.php" method="GET">
                     <div class="form-row align-items-center">
                         <div class="col-sm-3 my-1">
-                            <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre del producto" name="producto">
+                            <input type="text" class="form-control" id="inlineFormInputName" placeholder="Nombre del producto" name="producto" value="<?php echo $productoSearch?>">
                         </div>
                         <div class="col-sm-3 my-1">
                             <select class="form-control" name="categoria" id="inlineFormInputName">
-                                <option disabled selected>Seleccione una categoria</option>
-                                <option value="Alimentos">Alimentos</option>
-                                <option value="Productos">Productos</option>
+                                <option value="">Seleccione una categoria</option>
+                                <?php 
+                                    while ($fila = mysqli_fetch_assoc($listCat)) {
+                                        if ($categoriaSearch == $fila['id']) {
+                                            $isSelected = "selected";
+                                        } else {
+                                            $isSelected = "";
+                                        }
+                                        echo "<option $isSelected value=".$fila['id'].">".$fila['nombre']."</option>";
+                                    }
+                                ?>
                             </select>
                         </div>
                         <div class="col-auto my-1">
                             <button type="submit" class="btn btn-primary">Buscar</button>
-                        </div>
-                        <div class="col-sm-3 my-1">
-                            <?php if ($productoSearch): ?>
-                                <span class="badge badge-primary">
-                                    <a href="#" class="badge badge-primary"><?php echo $productoSearch; ?> x</a>
-                                </span>
-                            <?php endif; ?>
-                            <?php if ($categoriaSearch): ?>
-                                <span class="badge badge-primary">
-                                    <a href="#" class="badge badge-primary"><?php echo $categoriaSearch; ?> x</a>
-                                </span>
-                            <?php endif; ?> 
                         </div>
                     </div>
                 </form>
@@ -75,7 +75,6 @@
             </div>
 
         </div>
-
         <?php if (!$resultado): ?>
             <h1 class="text-center">No se encontraron resultados</h1> 
         <?php else: ?>
@@ -85,7 +84,7 @@
                         while ($fila = mysqli_fetch_assoc($resultado)) {
                             echo "<div class='col mb-4'>";
                                 echo "<div class='card'>";
-                                    echo "<img src=img/sitio/cereal.jpg class='card-img-top' alt='Cereal'>";
+                                    echo "<img src=img/prod/".$fila['imagen']." class='card-img-top' alt='Cereal'>";
                                     echo "<div class='card-body'>";
                                         echo "<h5 class='card-title'>".$fila['nombre']."</h5>";
                                         echo "<p class='card-text'>".$fila['descripcion']."</p>";

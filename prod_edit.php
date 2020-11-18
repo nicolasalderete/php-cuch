@@ -27,15 +27,16 @@
         
     <main class="container mt-5">
         <h1 class="text-center">Nuevo producto</h1>
-        <form action="prod_procesar.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" class="form-control" id="exampleFormControlInput1" name="accion" value="alta">
+        <form action="prod_procesar.php" method="POST">
+            <input type="hidden" class="form-control" id="exampleFormControlInput1" name="accion" value="update">
+            <input type="hidden" class="form-control" id="exampleFormControlInput1" name="prodId" value="<?php echo $fila['id']?>">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre del producto</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Categoría</label>
@@ -56,11 +57,6 @@
                 <input type="checkbox" class="form-check-input" id="exampleCheck1" name="destacado">
                 <label class="form-check-label" for="exampleCheck1">Destacado</label>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Subir imagen</label>
-                <input type="file" name="imagen">
-            </div>
-                
             <div class="form-group">
                 <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Agregar</button>
             </div>
