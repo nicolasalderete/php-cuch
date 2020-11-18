@@ -63,6 +63,7 @@
                 
             <div class="form-group">
                 <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <a href="prod_admin.php" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-left"></i> Volver</a>
             </div>
         </form>
     </main>

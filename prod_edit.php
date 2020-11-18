@@ -16,49 +16,70 @@
     
     <?php 
         menu();
-        
-        $consulta = 'SELECT * FROM categorias';
-        
-        $resultado = mysqli_query($conexion, $consulta)
-            or die('No se ha podido ejecutar la consulta.');
+        if(empty(trim($_GET["id"]))){
+            header("Location:error");
+            exit;
+        } else {
+            $prodId = filter_var($_GET["id"], FILTER_SANITIZE_STRING);
+            
+            $queryProducto = "select * from productos where id = '$prodId'";
+            $productoResult = mysqli_query($conexion, $queryProducto)
+            or header("Location:error");
 
-        mysqli_close($conexion);
+            $fila = mysqli_fetch_assoc($productoResult);
+
+            $consulta = 'SELECT * FROM categorias';
+            $resultado = mysqli_query($conexion, $consulta)
+            or die('No se ha podido ejecutar la consulta.');
+            
+            mysqli_close($conexion);
+        }
     ?>
         
     <main class="container mt-5">
-        <h1 class="text-center">Nuevo producto</h1>
-        <form action="prod_procesar.php" method="POST">
-            <input type="hidden" class="form-control" id="exampleFormControlInput1" name="accion" value="update">
-            <input type="hidden" class="form-control" id="exampleFormControlInput1" name="prodId" value="<?php echo $fila['id']?>">
+        <h1 class="text-center">Modificar producto</h1>
+        <form action="prod_procesar.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" class="form-control"  name="accion" value="update">
+            <input type="hidden" class="form-control"  name="prodId" value="<?php echo $prodId?>">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre del producto</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" required>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="nombre" value="<?php echo $fila['nombre']?>" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"><?php echo $fila['descripcion']?>"</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Categoría</label>
                 <select class="form-control" id="exampleFormControlSelect1" name="categoria" >
-                    <option disabled selected>Seleccione una categoria</option>
                     <?php 
-                        while ($fila = mysqli_fetch_assoc($resultado)) {
-                            echo "<option value=".$fila['id'].">".$fila['nombre']."</option>";
+                        while ($option = mysqli_fetch_assoc($resultado)) {
+                            if ($categoriaSearch == $fila['id']) {
+                                $isSelected = "selected";
+                            } else {
+                                $isSelected = "";
+                            }
+                            echo "<option $isSelected value=".$option['id'].">".$option['nombre']."</option>";
                         }
                     ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Precio</label>
-                <input type="text" name="precio" class="form-control" id="exampleFormControlInput1" required>
+                <input type="text" name="precio" class="form-control" id="exampleFormControlInput1" value="<?php echo $fila['precio']; ?>" required>
             </div>
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="destacado">
-                <label class="form-check-label" for="exampleCheck1">Destacado</label>
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" <?php if ($fila['destacado'] === '1') { echo "checked='true'"; }?> name="destacado">
+                <label class="form-check-label" for="exampleCheck1" >Destacado</label>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <label for="exampleFormControlTextarea1">Subir imagen</label>
+                <input type="file" name="imagen" value="<?php echo $fila['imagen']?>">
+            </div>
+                
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Actualizar</button>
+                <a href="prod_admin.php" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-left"></i> Volver</a>
             </div>
         </form>
     </main>

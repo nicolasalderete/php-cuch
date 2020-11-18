@@ -46,12 +46,12 @@
                                 echo "<td>".$fila['nombre']."</td>";
                                 echo "<td>".$fila['descripcion']."</td>";
                                 echo "<td>";
-                                    echo "<button class='btn'>";
+                                    echo "<a href='prod_edit.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";
-                                    echo "</button>|";
-                                    echo "<button class='btn'>";
+                                    echo "</a> | ";
+                                    echo "<a href='prod_delete.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-trash-alt'></i> Eliminar";
-                                    echo "</button>";
+                                    echo "</a>";
                                 echo "</td>";
                             echo "</tr>";
                         }
