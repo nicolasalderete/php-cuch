@@ -92,7 +92,7 @@
                         header("Location:user_admin.php?success={$Message}");
                     } else {
                         $Message = "Error al actualizar el usuario";
-                        header("Location:user_admin.php?error={$Message}");
+                        header("Location:user_edit.php?id=".$id."&error={$Message}");
                     }
                 }
             }

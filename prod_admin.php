@@ -58,7 +58,7 @@
                     ?>
                 </tbody>
             </table>
-        <?php endif; ?>     
+        <?php endif; ?>
     </main>
 
     <?php 

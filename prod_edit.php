@@ -47,7 +47,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"><?php echo $fila['descripcion']?>"</textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripcion"><?php echo $fila['descripcion']?></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Categoría</label>

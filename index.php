@@ -11,11 +11,15 @@
     <?php include('inc/conexion.php'); ?>
     <?php include('inc/menu.php'); ?>
     <?php include('inc/footer.php'); ?>
+    <?php include('inc/conexion.php'); ?> 
 </head>
 <body>
     
     <?php 
         menu();
+
+        $queryProducto = "select * from productos where destacado=1 limit 3";
+        $productoResult = mysqli_query($conexion, $queryProducto)
     ?>
         
     <main>
@@ -70,30 +74,18 @@
         <div class="container marketing">
 
             <div class="row">
-                <div class="col-lg-4">
-                    <img src="./img/sitio/cereal.jpg" alt="Cereal" class="rounded-circle">
-                    <title>Placeholder</title>
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                <img src="./img/sitio/cereal.jpg" alt="Cereal" class="rounded-circle">
-                    <title>Placeholder</title>
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                </div><!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                <img src="./img/sitio/cereal.jpg" alt="Cereal" class="rounded-circle">
-                    <title>Placeholder</title>
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
-                </div><!-- /.col-lg-4 -->
-            </div><!-- /.row -->
+                <?php while ($fila = mysqli_fetch_assoc($productoResult)) { ?>
+                    <div class="col-lg-4">
+                        <img src="./img/prod/<?php echo $fila['imagen']?>" alt="Cereal" class="rounded-circle">
+                        <title><?php echo $fila['nombre']?></title>
+                        <h2><?php echo $fila['nombre']?></h2>
+                        <p><?php echo $fila['descripcion']?></p>
+                        <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                    </div>
+                <?php } ?>
+                
+            </div>
         </div>
-
         <!--Fin Ofertas -->
     </main>
     
