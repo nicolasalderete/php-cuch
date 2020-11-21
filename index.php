@@ -18,6 +18,9 @@
     <?php 
         menu();
 
+
+        
+
         $queryProducto = "select * from productos where destacado=1 limit 3";
         $productoResult = mysqli_query($conexion, $queryProducto)
     ?>
