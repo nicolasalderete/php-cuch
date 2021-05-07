@@ -21,9 +21,18 @@
             $categoria = filter_var($_POST["categoria"], FILTER_VALIDATE_INT);
         }
 
+        /* Esto es lo que estaba, solo le puse una validacion si ingresaba una letra
+        en vez de un numero.
         if(empty($_POST["precio"])){
             $precio_error = "Por favor indique el precio para el producto";
-        } else{
+        } 
+        */
+        if(is_numeric($_POST["precio"]) == false || empty($_POST["precio"]))
+        {
+            $precio_error = "Por favor indique el precio para el producto";
+        }
+         else
+        {
             $precio = filter_var($_POST["precio"], FILTER_SANITIZE_STRING);
         }
 
