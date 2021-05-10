@@ -49,7 +49,7 @@
                                     echo "<a href='prod_edit.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";
                                     echo "</a> | ";
-                                    echo "<a href='#' class='btn' data-href='prod_delete.php?id=".$fila['id']."' data-toggle='modal' data-target='#confirm-delete'>";
+                                    echo "<a href='prod_delete.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-trash-alt'></i> Eliminar";
                                     echo "</a>";
                                 echo "</td>";
