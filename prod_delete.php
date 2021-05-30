@@ -1,7 +1,7 @@
 <?php
     include('inc/conexion.php');
 
-    if($_SERVER["REQUEST_METHOD"] == "GET"){
+  if($_SERVER["REQUEST_METHOD"] == "GET"){
 
         if(empty(trim($_GET["id"]))){
             $mensaje = "Error al eliminar el producto";
@@ -20,6 +20,5 @@
             }
         }
     }
-
     
 ?>
