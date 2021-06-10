@@ -50,9 +50,17 @@
                                     echo "<button class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";
                                     echo "</button>|";
+                                    /*
                                     echo "<button class='btn'>";
                                         echo "<i class='fas fa-trash-alt'></i> Eliminar";
-                                    echo "</button>";
+                                    echo "</button>";*/
+                                    ?>
+                                    
+                                    <a type="btn" class="btn btn-danger" data-toggle="modal" data-target="#modalborraroferta<?php echo $fila['id'];?>">
+                                    <i class="fas fa-trash-alt">  </i>
+                                     Eliminar
+                                    </a>
+                                    <?php
                                 echo "</td>";
                             echo "</tr>";
                         }

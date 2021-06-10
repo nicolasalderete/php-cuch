@@ -48,11 +48,21 @@
                                     echo "<a href='cat_edit.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";
                                     echo "</a> | ";
+                                    /*
                                     echo "<a href='cat_delete.php?id=".$fila['id']."' class='btn'>";
                                         echo "<i class='fas fa-trash-alt'></i> Eliminar";
-                                    echo "</a>";
+                                    echo "</a>";*/
+                                    ?>
+                                    <a type="btn" class="btn btn-danger" data-toggle="modal" data-target="#modalborrarcat<?php echo $fila['id'];?>">
+                                    <i class="fas fa-trash-alt">  </i>
+                                     Eliminar
+                                    </a>
+                                    <?php
                                 echo "</td>";
                             echo "</tr>";
+
+                            // include del modal de borrar categoria.
+                            include('modalborrarcat.php');
                         }
                     ?>
                 </tbody>

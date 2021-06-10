@@ -49,10 +49,20 @@
                                     echo "<a href='user_edit.php?id=".$fila['id_usuario']."' class='btn'>";
                                         echo "<i class='fas fa-pencil-alt'></i> Editar";
                                     echo "</a> | ";
-                                    echo "<a href='user_delete.php?id=".$fila['id_usuario']."' class='btn'>";
-                                        echo "<i class='fas fa-trash-alt'></i> Eliminar";
-                                    echo "</a>";
+                                    ?>
+
+                                    <a type="btn" class="btn btn-danger" data-toggle="modal" data-target="#modalborrarusuario<?php echo $fila['id_usuario'];?>">
+                                    <i class="fas fa-trash-alt">  </i>
+                                     Eliminar
+                                    </a>
+                                    <?php
                                 echo "</td>";
+                            echo "</tr>";
+
+                            include('modalborrarusuario.php');
+
+
+                            echo "</td>";
                             echo "</tr>";
                         }
                     ?>

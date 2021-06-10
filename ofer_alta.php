@@ -23,7 +23,7 @@
         <form action="ofer_procesar.php" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre de la oferta</label>
-                <input type="nombre" class="form-control" id="exampleFormControlInput1" >
+                <input type="nombre" class="form-control" id="exampleFormControlInput1" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Seleccione los productos de la oferta</label>
-                <select multiple class="form-control" id="exampleFormControlSelect2">
+                <select multiple class="form-control" id="exampleFormControlSelect2" name="prod_seleccionados[]">
                     <?php 
                         while ($fila = mysqli_fetch_assoc($resultado)) {
                             echo "<option value='".$fila['id']."'>".$fila['nombre']."</option>";
@@ -40,7 +40,13 @@
                 </select>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button>
+                <label for="exampleFormControlInput1">Precio</label>
+                <input type="text" name="precio" class="form-control" id="exampleFormControlInput1" required>
+            </div>
+            <div class="form-group">
+               <!-- <button class="btn btn-primary"><i class="fas fa-plus-circle"></i> Agregar</button> --> 
+               <button class="btn btn-primary" type="submit"><i class="fas fa-plus-circle"></i> Agregar</button>
+               <a href="ofer_admin.php" class="btn btn-secondary"><i class="fas fa-arrow-alt-circle-left"></i> Volver</a>
             </div>
         </form>
     </main>

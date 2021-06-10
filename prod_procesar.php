@@ -10,7 +10,7 @@
         }
 
         if(empty($_POST["descripcion"])){
-            $descripcion_error = "Por favor indique un nombre del producto";
+            $descripcion_error = "Por favor indique una descripcion del producto";
         } else{
             $descripcion = filter_var($_POST["descripcion"], FILTER_SANITIZE_STRING);
         }
