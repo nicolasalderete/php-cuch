@@ -80,22 +80,49 @@
         <?php else: ?>
             <div class="container mt-5">
                 <div class="row row-cols-1 row-cols-md-3">
-                    <?php 
-                        while ($fila = mysqli_fetch_assoc($resultado)) {
-                            echo "<div class='col mb-4'>";
-                                echo "<div class='card'>";
-                                    echo "<img src=img/prod/".$fila['imagen']." class='card-img-top' alt='Cereal'>";
-                                    echo "<div class='card-body'>";
-                                        echo "<h5 class='card-title'>".$fila['nombre']."</h5>";
-                                        echo "<p class='card-text'>".$fila['descripcion']."</p>";
-                                    echo "</div>";
-                                echo "</div>";
-                            echo "</div>";
-                        }
+                <?php 
+                    while ($fila = mysqli_fetch_assoc($resultado)) {
+                        echo "<div class='col mb-4'>";
+                        echo "<div class='card'>";
+                        echo "<img src=img/prod/".$fila['imagen']." class='card-img-top' alt='Cereal'>";
+                        echo "<div class='card-body'>";
+                        echo "<h5 class='card-title'>".$fila['nombre']."</h5>";
+                        echo "<p class='card-text'>".$fila['descripcion']."</p>";
+                        //Crear boton "Agregar al carrito"
+                        echo '<button type="submit" name="agregarProducto" id="agregarProducto" class="btn btn-primary">Agregar al carrito</button>';
                     ?>
-                </div>
+                    
+                    <script>            
+                        $('.agregarProducto').click(function(){
+                            var id = $(this).parent().data('id');
+
+                                $.ajax
+                                ({ 
+                                    url: 'reservebook.php',
+                                        data: {"id": id},
+                                        type: 'post',
+                                            success: function(result)
+                                            {
+                                                $('.modal-box').text(result).fadeIn(700, function() 
+                                                    {
+                                                        setTimeout(function() 
+                                                    {
+                                                $('.modal-box').fadeOut();
+                                            }, 2000);
+                                        });
+                                    }
+                                });
+                            });
+                    </script>
+                <?php
+                    echo "</div>";
+                    echo "</div>";
+                    echo "</div>";
+                }
+            ?>
             </div>
-        <?php endif; ?>  
+        </div>
+    <?php endif; ?>  
     </main>
 
     <?php
