@@ -58,25 +58,14 @@
             </form>
             <!--Buscar productos -->
 
+            <!--INCIAR SESSION O REGISTRARSE -->
+                    
             <?php if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']): ?>
                 <div class="nav-item ml-2">
-                    <a class="nav-link btn btn-danger " href="logout.php"> <?php echo $_SESSION['usuario'] ?> <i class="fas fa-user-times"></i></a>
+                    <a class="nav-link btn btn-danger " href="logout.php"> cerrar sesion <i class="fas fa-user-times"></i></a>
                 </div>
             <?php else: ?>
-                <div class="nav-item dropleft">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" id="dropdownMenuOffset" data-offset="10,20"><i class="fas fa-user-lock"></i> iniciar sesion</a>
-                    <form class="dropdown-menu p-4" aria-labelledby="dropdownMenuOffset" action="login.php" method="POST">
-                        <div class="form-group">
-                            <label for="exampleDropdownFormEmail2">Usuario</label>
-                            <input type="text" class="form-control" id="usuario" placeholder="Usuario" name="username" >
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleDropdownFormPassword2">Clave</label>
-                            <input type="password" class="form-control" id="password" placeholder="Clave" name="password" >
-                        </div>
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
-                    </form>
-                </div>
+                <a href="iniciar_sesion.php" class="btn btn-light btn-link">Ingresar/registrarse</a>
             <?php endif; ?>
         </div>
     </nav>
