@@ -23,7 +23,7 @@
         mysqli_close($conexion);
     ?>
         
-    <main class="mt-5 mr-5 ml-5">
+    <main class="container mt-5">
         <h1 class="text-center">Alta, baja y modificación de productos</h1>
         <p><a href="prod_alta.php" class="btn btn-secondary"><i class="fas fa-plus-circle"></i> Nueva producto</a></p>
         <?php if (!$resultado): ?>
