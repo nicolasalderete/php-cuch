@@ -3,7 +3,7 @@
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        if(empty(trim($_POST["username"]))){
+       if(empty(trim($_POST["username"]))){
             $username_err = "Please enter username.";
         } else{
             $username = trim($_POST["username"]);
@@ -29,11 +29,12 @@
         if (password_verify($password, $clavebdd)) {
             session_start();
 
-            $resultado = mysqli_query($conexion, "SELECT nombre as nombre,  apellido as apellido FROM usuarios WHERE usuario = '$username'");
+            $resultado = mysqli_query($conexion, "SELECT nombre as nombre,  apellido as apellido, rol_id as rol_id FROM usuarios WHERE usuario = '$username'");
             $fila = mysqli_fetch_assoc($resultado);
 
             $_SESSION["usuario"] = $fila['nombre']. " " .$fila['apellido'];
             $_SESSION["loggedIn"] = true;
+            $_SESSION["rol_id"] = $fila['rol_id'];
             $Message = "Bienvenido ".$_SESSION["usuario"]. "";
             header("Location:index.php?success={$Message}");
         } else {

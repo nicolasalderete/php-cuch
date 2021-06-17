@@ -36,19 +36,26 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="ubicacion.php"><i class="fas fa-street-view"></i> Ubicación</a>
                 </li>
-                <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']): ?>
+                <?php if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] ){ 
+                    
+                    $nombre = $_SESSION['usuario'];
+	                $rol_id = $_SESSION['rol_id'];
+                    
+                    if($rol_id == 1){
+                    ?>
                     <!--Ver si esta logueado -->
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administración</a>
-                        <div class="dropdown-menu">
-                        <a class="dropdown-item" href="prod_admin.php">Productos</a>
-                        <a class="dropdown-item" href="cat_admin.php">Categorias</a>
-                        <a class="dropdown-item" href="ofer_admin.php">Ofertas</a>
-                        <a class="dropdown-item" href="user_admin.php">Usuarios</a>
-                        </div>
-                    </li>
-                    <!--Ver si esta logueado -->
-                <?php endif; ?> 
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administración</a>
+                            <div class="dropdown-menu">
+                            <a class="dropdown-item" href="prod_admin.php">Productos</a>
+                            <a class="dropdown-item" href="cat_admin.php">Categorias</a>
+                            <a class="dropdown-item" href="ofer_admin.php">Ofertas</a>
+                            <a class="dropdown-item" href="user_admin.php">Usuarios</a>
+                            </div>
+                        </li>
+                       
+                <?php } } ?> 
+                <!--Ver si esta logueado -->
             </ul>
 
             <!--Buscar productos -->
