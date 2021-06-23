@@ -47,7 +47,7 @@
         else
         {
             $alta_oferta = "INSERT INTO ofertas (nombre , descripcion , precio) values ('$nombre', '$descripcion', '$precio')";
-            $resultado = mysqli_query($conexion, $altaoferta) or die('No se ha podido ejecutar la consulta.');
+            $resultado = mysqli_query($conexion, $alta_oferta) or die('No se ha podido ejecutar la consulta.');
             
             mysqli_close($conexion);
     
