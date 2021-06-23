@@ -79,7 +79,7 @@
             <div class="row">
                 <?php while ($fila = mysqli_fetch_assoc($productoResult)) { ?>
                     <div class="col-lg-4">
-                        <img src="./img/prod/<?php echo $fila['imagen']?>" alt="Cereal" class="rounded-circle">
+                        <img src="./img/sitio/<?php echo $fila['imagen']?>" alt="Cereal" class="rounded-circle">
                         <title><?php echo $fila['nombre']?></title>
                         <h2><?php echo $fila['nombre']?></h2>
                         <p><?php echo $fila['descripcion']?></p>

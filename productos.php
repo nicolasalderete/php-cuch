@@ -84,12 +84,12 @@
                     while ($fila = mysqli_fetch_assoc($resultado)) {
                         echo "<div class='col mb-4'>";
                         echo "<div class='card'>";
-                        echo "<img src=img/prod/".$fila['imagen']." class='card-img-top' alt='Cereal'>";
+                        echo "<img src=img/sitio/".$fila['imagen']." class='card-img-top' alt='Cereal'>";
                         echo "<div class='card-body'>";
                         echo "<h5 class='card-title'>".$fila['nombre']."</h5>";
                         echo "<p class='card-text'>".$fila['descripcion']."</p>";
                         //Crear boton "Agregar al carrito"
-                        echo '<button type="submit" name="agregarProducto" id="agregarProducto" class="btn btn-primary">Agregar al carrito</button>';
+                        echo '<a class="btn btn-success" href="cartAction.php?action=addToCart&id=<?php echo $row["id"]; ?>Add to cart</a>';
                     ?>
                     
                     <script>            

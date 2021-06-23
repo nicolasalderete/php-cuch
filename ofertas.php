@@ -34,6 +34,7 @@
                         echo "<div class='container'>";
                             echo "<h1 class='display-4'>".$fila['nombre']."</h1>";
                             echo "<p class='lead'>".$fila['descripcion']."</p>";
+                            echo "<p class='lead'>".$fila['precio']."</p>";
                         echo "</div>";
                     echo "</div>";
                 }
