@@ -23,11 +23,11 @@
         <form action="ofer_procesar.php" method="POST">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombre de la oferta</label>
-                <input type="nombre" class="form-control" id="exampleFormControlInput1" required>
+                <input type="text" name="nombre" class="form-control" id="exampleFormControlInput1" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea name="descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Seleccione los productos de la oferta</label>

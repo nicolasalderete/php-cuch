@@ -63,6 +63,7 @@
                                     <?php
                                 echo "</td>";
                             echo "</tr>";
+                            include('modalborraroferta.php');
                         }
                     ?>
                 </tbody>
